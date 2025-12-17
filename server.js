@@ -37,7 +37,12 @@ dotenv.config()
 const server = express()
 server.use(express.json())
 
-server.use("/", require("./routes/productroute"))
+// Root route
+server.get('/', (req, res) => {
+    res.json({ ok: true, message: 'Charity Backend API' })
+})
+
+server.use("/products", require("./routes/productroute"))
 
 try {
     server.use("/users", require("./routes/userroute"))
