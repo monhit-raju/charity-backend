@@ -3,6 +3,11 @@ const { createUser, getUsers, getUserById } = require("../controllers/usercontro
 
 const router = express.Router();
 
+// Test route
+router.get('/test', (req, res) => {
+    res.json({ message: 'User routes working!' });
+});
+
 router.post('/', createUser);
 router.get('/', getUsers);
 router.get('/:id', getUserById);
