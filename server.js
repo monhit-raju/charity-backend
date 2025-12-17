@@ -43,6 +43,7 @@ server.get('/', (req, res) => {
 })
 
 server.use("/products", require("./routes/productroute"))
+server.use("/test", require("./routes/test"))
 
 try {
     server.use("/users", require("./routes/userroute"))
