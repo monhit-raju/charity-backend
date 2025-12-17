@@ -11,6 +11,17 @@ if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
   razorpay = new Razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET });
 }
 
+// Get all donations
+router.get('/all', async (req, res) => {
+  try {
+    const donations = await Donation.find().sort({ createdAt: -1 });
+    res.json(donations);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Get Razorpay key
 router.get('/', async (req, res) => {
   const auth = req.headers.authorization;
