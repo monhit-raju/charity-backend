@@ -38,8 +38,20 @@ const server = express()
 server.use(express.json())
 
 server.use("/", require("./routes/productroute"))
-server.use("/users", require("./routes/userroute"))
-server.use("/contact", require("./routes/contact"))
+
+try {
+    server.use("/users", require("./routes/userroute"))
+    console.log("User routes loaded successfully")
+} catch (err) {
+    console.error("Error loading user routes:", err)
+}
+
+try {
+    server.use("/contact", require("./routes/contact"))
+    console.log("Contact routes loaded successfully")
+} catch (err) {
+    console.error("Error loading contact routes:", err)
+}
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("mongodb connected"))
