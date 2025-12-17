@@ -59,6 +59,13 @@ try {
     console.error("Error loading contact routes:", err)
 }
 
+try {
+    server.use("/donations", require("./routes/donations"))
+    console.log("Donations routes loaded successfully")
+} catch (err) {
+    console.error("Error loading donations routes:", err)
+}
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("mongodb connected"))
 .catch(err => console.log(err))
