@@ -39,6 +39,7 @@ server.use(express.json())
 
 server.use("/", require("./routes/productroute"))
 server.use("/users", require("./routes/userroute"))
+server.use("/contact", require("./routes/contact"))
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("mongodb connected"))
