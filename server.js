@@ -32,7 +32,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 
-dotenv.config({ path: '.env.local' })
+dotenv.config()
 
 const server = express()
 server.use(express.json())
